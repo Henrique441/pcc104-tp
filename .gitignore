@@ -1,0 +1,37 @@
+# Executáveis
+*.exe
+*.out
+*.bin
+
+# Arquivos objeto
+*.o
+*.obj
+
+# Arquivos temporários
+*.tmp
+*.log
+
+# Debug
+*.dSYM/
+*.gcda
+*.gcno
+*.gcov
+
+# IDEs
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+bin/
+
+# Relatório temporário
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
