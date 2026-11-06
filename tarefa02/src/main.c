@@ -5,6 +5,7 @@
 #include <inttypes.h>
 #include <errno.h>
 #include <limits.h>
+#include <time.h>
 #include "grafo.h"
 #include "dijkstra.h"
 
@@ -63,8 +64,15 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    //Inicia o contador
+    clock_t inicio = clock();
+
     //Executa o algoritmo de Dijkstra
     ResultadoDijkstra *resultado = dijkstra(grafo, origem);
+
+    clock_t fimTempo = clock();//Finaliza o contador
+    
+    double tempo = (fimTempo - inicio) / (double)CLOCKS_PER_SEC;
 
     if (resultado == NULL) {
         fprintf(stderr, "Erro ao executar Dijkstra.\n");
@@ -72,6 +80,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    
+    fprintf(stderr, "Tempo de Dijkstra: %.6f segundos\n", tempo);
     //Confere se o destino esta correto e printa o resultado
     
     if (destino != -1) {
