@@ -84,8 +84,6 @@ void destruirGrafo(Grafo *grafo) {
 }
 
 
-
-
 //função para ler um grafo da entrada padrão
 Grafo *lerGrafo(void) {
     char linha[256];
