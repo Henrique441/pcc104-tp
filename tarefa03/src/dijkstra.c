@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
-#include "dijkstra.h"
+#include "../include/dijkstra.h"
 
 //executa o algoritmo de Dijkstra
 ResultadoDijkstra *dijkstra(const Grafo *grafo, int origem) {
