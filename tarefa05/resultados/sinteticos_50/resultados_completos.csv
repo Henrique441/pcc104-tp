@@ -1,0 +1,6 @@
+vertices,arestas,execucao,tempo,caminhos,chamadas,melhor_custo,concluida
+5,10,1,5e-06,2,6,10,True
+10,45,1,0.001686,906,2329,7,True
+15,105,1,10.00002,3234701,8541965,18,False
+20,190,1,10.000006,1374235,5740636,77,False
+25,300,1,10.000052,1663455,5210752,89,False

@@ -1,0 +1,6 @@
+vertices,custo_busca,custo_dijkstra,busca_concluida,custos_coincidem
+5,10,10,True,True
+10,7,7,True,True
+15,5,5,True,True
+20,59,8,False,False
+25,81,5,False,False
