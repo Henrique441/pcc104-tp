@@ -1,0 +1,46 @@
+instancia,vertices,arestas,densidade,modo,algoritmo,tempo_medio,tempo_desvio,caminhos_medios,chamadas_medias,podas_medias,podas_custo_medias,podas_limite_medias,taxa_conclusao,custos_observados
+tests/instancias_sinteticas/densidade_20/grafo_10.gr,10,18,0.2,0,Busca Completa,1.0666666666666667e-05,6.350852961085884e-06,3,15,0,0,0,1,21
+tests/instancias_sinteticas/densidade_20/grafo_10.gr,10,18,0.2,1,Poda por Custo,4e-06,1.0000000000000002e-06,2,8,1,1,0,1,21
+tests/instancias_sinteticas/densidade_20/grafo_10.gr,10,18,0.2,2,Poda por Limite Inferior,2.5666666666666666e-05,2.8867513459481285e-06,1,5,2,0,2,1,21
+tests/instancias_sinteticas/densidade_20/grafo_15.gr,15,42,0.2,0,Busca Completa,0.00040333333333333334,4.725815626252601e-06,91,714,0,0,0,1,30
+tests/instancias_sinteticas/densidade_20/grafo_15.gr,15,42,0.2,1,Poda por Custo,1.4666666666666666e-05,5.773502691896261e-07,2,34,15,15,0,1,30
+tests/instancias_sinteticas/densidade_20/grafo_15.gr,15,42,0.2,2,Poda por Limite Inferior,5.466666666666667e-05,5.773502691896281e-07,2,17,10,2,8,1,30
+tests/instancias_sinteticas/densidade_20/grafo_20.gr,20,76,0.2,0,Busca Completa,0.044199333333333334,0.0031993412342751644,13949,56024,0,0,0,1,6
+tests/instancias_sinteticas/densidade_20/grafo_20.gr,20,76,0.2,1,Poda por Custo,8.333333333333334e-06,1.1547005383792518e-06,1,16,12,12,0,1,6
+tests/instancias_sinteticas/densidade_20/grafo_20.gr,20,76,0.2,2,Poda por Limite Inferior,9.966666666666667e-05,2.193931022920578e-05,1,6,4,2,2,1,6
+tests/instancias_sinteticas/densidade_20/grafo_25.gr,25,120,0.2,0,Busca Completa,10.000004,1.000000000139778e-06,1215889.6666666667,9707079.333333334,0,0,0,0,52
+tests/instancias_sinteticas/densidade_20/grafo_25.gr,25,120,0.2,1,Poda por Custo,0.000319,6.16522505671934e-05,16,688,501,501,0,1,23
+tests/instancias_sinteticas/densidade_20/grafo_25.gr,25,120,0.2,2,Poda por Limite Inferior,0.00018966666666666665,3.448671241700683e-05,9,104,72,35,37,1,23
+tests/instancias_sinteticas/densidade_20/grafo_5.gr,5,4,0.2,0,Busca Completa,3e-06,0.0,1,5,0,0,0,1,36
+tests/instancias_sinteticas/densidade_20/grafo_5.gr,5,4,0.2,1,Poda por Custo,2.333333333333333e-06,5.773502691896259e-07,1,5,0,0,0,1,36
+tests/instancias_sinteticas/densidade_20/grafo_5.gr,5,4,0.2,2,Poda por Limite Inferior,8e-06,0.0,1,5,0,0,0,1,36
+tests/instancias_sinteticas/densidade_50/grafo_10.gr,10,45,0.5,0,Busca Completa,0.002165666666666667,5.2937069557478875e-05,1121,3111,0,0,0,1,11
+tests/instancias_sinteticas/densidade_50/grafo_10.gr,10,45,0.5,1,Poda por Custo,1.866666666666667e-05,5.507570547286103e-06,5,37,23,23,0,1,11
+tests/instancias_sinteticas/densidade_50/grafo_10.gr,10,45,0.5,2,Poda por Limite Inferior,3.733333333333334e-05,9.018499505645788e-06,2,13,9,5,4,1,11
+tests/instancias_sinteticas/densidade_50/grafo_15.gr,15,105,0.5,0,Busca Completa,6.495273666666667,0.24479141978699595,1980301,5899940,0,0,0,1,13
+tests/instancias_sinteticas/densidade_50/grafo_15.gr,15,105,0.5,1,Poda por Custo,2.2333333333333332e-05,5.773502691896261e-07,5,41,29,29,0,1,13
+tests/instancias_sinteticas/densidade_50/grafo_15.gr,15,105,0.5,2,Poda por Limite Inferior,5.9000000000000004e-05,1.5588457268119894e-05,1,8,6,2,4,1,13
+tests/instancias_sinteticas/densidade_50/grafo_20.gr,20,190,0.5,0,Busca Completa,10.000004666666667,5.773502687575366e-07,1424528.6666666667,6523845.666666667,0,0,0,0,24
+tests/instancias_sinteticas/densidade_50/grafo_20.gr,20,190,0.5,1,Poda por Custo,0.00012133333333333333,3.214550253664317e-06,9,220,184,184,0,1,9
+tests/instancias_sinteticas/densidade_50/grafo_20.gr,20,190,0.5,2,Poda por Limite Inferior,0.00014233333333333334,3.1021497922139954e-05,3,49,41,30,11,1,9
+tests/instancias_sinteticas/densidade_50/grafo_25.gr,25,300,0.5,0,Busca Completa,10.000004333333333,5.773502687575366e-07,1749417.3333333333,5628391,0,0,0,0,17
+tests/instancias_sinteticas/densidade_50/grafo_25.gr,25,300,0.5,1,Poda por Custo,6.933333333333333e-05,3.280751946327752e-05,4,122,107,107,0,1,6
+tests/instancias_sinteticas/densidade_50/grafo_25.gr,25,300,0.5,2,Poda por Limite Inferior,0.00016566666666666666,3.2145502536643093e-06,3,80,70,66,4,1,6
+tests/instancias_sinteticas/densidade_50/grafo_5.gr,5,10,0.5,0,Busca Completa,7.666666666666667e-06,6.350852961085884e-06,2,6,0,0,0,1,10
+tests/instancias_sinteticas/densidade_50/grafo_5.gr,5,10,0.5,1,Poda por Custo,2.666666666666667e-06,5.773502691896259e-07,1,4,1,1,0,1,10
+tests/instancias_sinteticas/densidade_50/grafo_5.gr,5,10,0.5,2,Poda por Limite Inferior,8e-06,0.0,1,3,1,0,1,1,10
+tests/instancias_sinteticas/densidade_80/grafo_10.gr,10,72,0.8,0,Busca Completa,0.07082866666666666,0.006438631013913851,21915,59523,0,0,0,1,9
+tests/instancias_sinteticas/densidade_80/grafo_10.gr,10,72,0.8,1,Poda por Custo,7.066666666666666e-05,1.1547005383792562e-06,13,115,80,80,0,1,9
+tests/instancias_sinteticas/densidade_80/grafo_10.gr,10,72,0.8,2,Poda por Limite Inferior,3.2e-05,2.6457513110645907e-06,3,22,16,8,8,1,9
+tests/instancias_sinteticas/densidade_80/grafo_15.gr,15,168,0.8,0,Busca Completa,10.000007333333333,4.93288286168537e-06,3640538.6666666665,7644263.666666667,0,0,0,0,14
+tests/instancias_sinteticas/densidade_80/grafo_15.gr,15,168,0.8,1,Poda por Custo,0.00013666666666666666,2.081665999466127e-06,26,246,192,192,0,1,10
+tests/instancias_sinteticas/densidade_80/grafo_15.gr,15,168,0.8,2,Poda por Limite Inferior,6.8e-05,7.000000000000003e-06,2,30,25,14,11,1,10
+tests/instancias_sinteticas/densidade_80/grafo_20.gr,20,304,0.8,0,Busca Completa,10.000005,1.000000000139778e-06,2436832.6666666665,5626335.666666667,0,0,0,0,10
+tests/instancias_sinteticas/densidade_80/grafo_20.gr,20,304,0.8,1,Poda por Custo,0.00021033333333333334,5.3500778810530734e-05,23,388,336,336,0,1,4
+tests/instancias_sinteticas/densidade_80/grafo_20.gr,20,304,0.8,2,Poda por Limite Inferior,0.00013433333333333334,2.490649179096353e-05,6,79,67,56,11,1,4
+tests/instancias_sinteticas/densidade_80/grafo_25.gr,25,480,0.8,0,Busca Completa,10.000019,3.6055512754752933e-06,2171877.6666666665,4727166,0,0,0,0,13
+tests/instancias_sinteticas/densidade_80/grafo_25.gr,25,480,0.8,1,Poda por Custo,0.00042,6.202418882984282e-05,48,932,831,831,0,1,11
+tests/instancias_sinteticas/densidade_80/grafo_25.gr,25,480,0.8,2,Poda por Limite Inferior,0.00019566666666666666,3.203643758805484e-05,3,59,53,40,13,1,11
+tests/instancias_sinteticas/densidade_80/grafo_5.gr,5,16,0.8,0,Busca Completa,1.2333333333333333e-05,2.3094010767585036e-06,9,18,0,0,0,1,6
+tests/instancias_sinteticas/densidade_80/grafo_5.gr,5,16,0.8,1,Poda por Custo,3e-06,0.0,2,6,2,2,0,1,6
+tests/instancias_sinteticas/densidade_80/grafo_5.gr,5,16,0.8,2,Poda por Limite Inferior,9.333333333333334e-06,5.773502691896261e-07,2,6,2,2,0,1,6

@@ -48,3 +48,15 @@ python3 scripts/comparar_dijkstra.py \
 
 python3 scripts/analisar_experimentos.py
 
+
+python3 scripts/comparar_desempenho.py \
+    --densidades 20 \
+    --tamanhos 5 10 \
+    --repeticoes 1 \
+    --limite 10
+
+
+
+
+
+
