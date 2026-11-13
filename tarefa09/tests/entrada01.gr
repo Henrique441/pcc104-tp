@@ -1,0 +1,9 @@
+c Grafo de teste para backtracking
+p sp 5 7
+a 1 2 3
+a 1 3 8
+a 2 3 2
+a 2 4 4
+a 3 4 1
+a 3 5 10
+a 4 5 2
