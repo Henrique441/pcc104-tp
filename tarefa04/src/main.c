@@ -10,6 +10,7 @@
 #include "../include/grafo.h"
 #include "../include/dijkstra.h"
 
+//Função auxiliar para ler um inteiro a partir de uma string
 static int lerInteiro(const char *texto, int *valor) {
     char *fim;
     errno = 0;
@@ -30,6 +31,8 @@ int main(int argc, char *argv[]) {
     int origem = 1;
     int destino = -1;
 
+
+    // Verifica os argumentos da linha de comando
     if (argc > 3) {
         fprintf(stderr,
                 "Uso: %s [origem] [destino]\n", argv[0]);

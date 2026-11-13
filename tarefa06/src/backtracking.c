@@ -5,12 +5,14 @@
 #include <time.h>
 #include "backtracking.h"
 
+//estrutura para controlar o tempo de execução do backtracking
 typedef struct {
     clock_t inicio;
     double tempoMaximo;
     int interrompida;
 } ControleBusca;
 
+//função auxiliar para verificar se o tempo máximo de execução foi atingido
 static int tempoEsgotado(ControleBusca *controle) {
     if (controle->interrompida)
         return 1;
@@ -40,7 +42,7 @@ static int64_t *calcularDistancias(
 
     int64_t *dist = malloc((n + 1) * sizeof(int64_t));
     int *processado = calloc(n + 1, sizeof(int));
-
+    // processado[v] = 1 se o vertice v ja foi processado
     if (dist == NULL || processado == NULL) {
         free(dist);
         free(processado);
@@ -52,12 +54,13 @@ static int64_t *calcularDistancias(
 
     dist[destino] = 0;
 
+    // Executa Dijkstra no grafo transposto.
     for (int i = 1; i <= n; i++) {
         if (tempoEsgotado(controle))
             break;
 
         int atual = -1;
-
+        //Encontra o vertice nao processado com a menor distancia
         for (int v = 1; v <= n; v++) {
             if (!processado[v] &&
                 (atual == -1 || dist[v] < dist[atual])) {
@@ -70,7 +73,7 @@ static int64_t *calcularDistancias(
 
         processado[atual] = 1;
 
-        // Percorre arestas originais u -> atual.
+        //Percorre arestas originais u -> atual.
         for (int u = 1; u <= n; u++) {
             if (tempoEsgotado(controle))
                 break;
@@ -99,6 +102,7 @@ static int64_t *calcularDistancias(
     return dist;
 }
 
+//Função recursiva para explorar todos os caminhos possíveis entre a origem e o destino
 static void explorarCaminhos(
     const Grafo *grafo,
     int atual,
@@ -137,7 +141,7 @@ static void explorarCaminhos(
         return;
     }
 
-    // Poda 1: custo acumulado.
+    //Poda 1: custo acumulado.
     if (resultado->tamanhoMelhorCaminho > 0 &&
         custoAtual >= resultado->melhorCusto) {
 
@@ -148,7 +152,7 @@ static void explorarCaminhos(
         return;
     }
 
-    // Poda 2: distancia minima restante.
+    //Poda 2: distancia minima restante.
     if (modo == 2) {
         int podar = (distancias[atual] == INT64_MAX);
 
@@ -171,9 +175,9 @@ static void explorarCaminhos(
         }
     }
 
-    const Aresta *aresta =
-        grafo->vertices[atual].primeiraAresta;
+    const Aresta *aresta = grafo->vertices[atual].primeiraAresta;
 
+    //Explora os vizinhos do vértice atual
     while (aresta != NULL) {
         if (tempoEsgotado(controle))
             break;
@@ -204,6 +208,7 @@ static void explorarCaminhos(
     visitado[atual] = 0;
 }
 
+//Função principal para executar o backtracking com ou sem poda por limite inferior
 ResultadoBacktracking *executarBacktrackingModo(
     const Grafo *grafo,
     int origem,
@@ -211,18 +216,14 @@ ResultadoBacktracking *executarBacktrackingModo(
     double tempoMaximo,
     int modo
 ) {
-    if (grafo == NULL ||
-        origem < 1 || origem > grafo->numVertices ||
-        destino < 1 || destino > grafo->numVertices ||
-        tempoMaximo < 0 ||
-        (modo != 1 && modo != 2)) {
+    if (grafo == NULL || origem < 1 || origem > grafo->numVertices || destino < 1 || destino > grafo->numVertices || tempoMaximo < 0 || (modo != 1 && modo != 2)) {
         return NULL;
     }
 
     int n = grafo->numVertices;
 
-    ResultadoBacktracking *resultado =
-        calloc(1, sizeof(ResultadoBacktracking));
+    //Aloca memória para o resultado do backtracking
+    ResultadoBacktracking *resultado = calloc(1, sizeof(ResultadoBacktracking));
 
     if (resultado == NULL)
         return NULL;
@@ -232,14 +233,13 @@ ResultadoBacktracking *executarBacktrackingModo(
     resultado->numVertices = n;
     resultado->melhorCusto = INT64_MAX;
 
-    resultado->melhorCaminho =
-        malloc((n + 1) * sizeof(int));
+    resultado->melhorCaminho = malloc((n + 1) * sizeof(int));
 
     int *visitado = calloc(n + 1, sizeof(int));
     int *caminhoAtual = malloc((n + 1) * sizeof(int));
 
-    if (resultado->melhorCaminho == NULL ||
-        visitado == NULL || caminhoAtual == NULL) {
+    //verifica se a alocação de memória foi bem-sucedida
+    if (resultado->melhorCaminho == NULL || visitado == NULL || caminhoAtual == NULL) {
 
         free(visitado);
         free(caminhoAtual);
@@ -247,6 +247,7 @@ ResultadoBacktracking *executarBacktrackingModo(
         return NULL;
     }
 
+    //inicializa o controle de tempo da busca completa
     ControleBusca controle = {
         .inicio = clock(),
         .tempoMaximo = tempoMaximo,
@@ -278,8 +279,7 @@ ResultadoBacktracking *executarBacktrackingModo(
     }
 
     resultado->buscaConcluida = !controle.interrompida;
-    resultado->tempoExecucao =
-        (double)(clock() - controle.inicio) / CLOCKS_PER_SEC;
+    resultado->tempoExecucao = (double)(clock() - controle.inicio) / CLOCKS_PER_SEC;
 
     free(distancias);
     free(visitado);
@@ -288,20 +288,19 @@ ResultadoBacktracking *executarBacktrackingModo(
     return resultado;
 }
 
+
+//função principal para executar o backtracking sem poda por limite inferior
 ResultadoBacktracking *executarBacktracking(
     const Grafo *grafo,
     int origem,
     int destino,
     double tempoMaximo
 ) {
-    return executarBacktrackingModo(
-        grafo, origem, destino, tempoMaximo, 1
-    );
+    return executarBacktrackingModo(grafo, origem, destino, tempoMaximo, 1);
 }
 
-void imprimirResultadoBacktracking(
-    const ResultadoBacktracking *resultado
-) {
+//função principal para executar o backtracking com poda por limite inferior
+void imprimirResultadoBacktracking(const ResultadoBacktracking *resultado) {
     if (resultado == NULL)
         return;
 
@@ -348,9 +347,8 @@ void imprimirResultadoBacktracking(
         resultado->buscaConcluida ? "Sim" : "Nao");
 }
 
-void destruirResultadoBacktracking(
-    ResultadoBacktracking *resultado
-) {
+//função para liberar a memória alocada para o resultado do backtracking
+void destruirResultadoBacktracking(ResultadoBacktracking *resultado) {
     if (resultado == NULL)
         return;
 

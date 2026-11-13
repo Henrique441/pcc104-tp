@@ -6,16 +6,14 @@
 
 #include "guloso.h"
 
+//função principal para executar o algoritmo guloso
 ResultadoGuloso *executarGuloso(
     const Grafo *grafo,
     int origem,
     int destino,
     double tempoMaximo
 ) {
-    if (grafo == NULL ||
-        origem < 1 || origem > grafo->numVertices ||
-        destino < 1 || destino > grafo->numVertices ||
-        tempoMaximo < 0) {
+    if (grafo == NULL || origem < 1 || origem > grafo->numVertices || destino < 1 || destino > grafo->numVertices || tempoMaximo < 0) {
         return NULL;
     }
 
@@ -23,8 +21,7 @@ ResultadoGuloso *executarGuloso(
 
     int n = grafo->numVertices;
 
-    ResultadoGuloso *resultado =
-        calloc(1, sizeof(ResultadoGuloso));
+    ResultadoGuloso *resultado = calloc(1, sizeof(ResultadoGuloso));
 
     if (resultado == NULL)
         return NULL;
@@ -32,13 +29,11 @@ ResultadoGuloso *executarGuloso(
     resultado->origem = origem;
     resultado->destino = destino;
 
-    resultado->caminho =
-        malloc((n + 1) * sizeof(int));
+    resultado->caminho = malloc((n + 1) * sizeof(int));
 
     int *visitado = calloc(n + 1, sizeof(int));
 
-    if (resultado->caminho == NULL ||
-        visitado == NULL) {
+    if (resultado->caminho == NULL || visitado == NULL) {
 
         free(visitado);
         destruirResultadoGuloso(resultado);
@@ -49,19 +44,15 @@ ResultadoGuloso *executarGuloso(
     int64_t custoAtual = 0;
 
     while (1) {
-        double tempoDecorrido =
-            (double)(clock() - inicio) / CLOCKS_PER_SEC;
+        double tempoDecorrido = (double)(clock() - inicio) / CLOCKS_PER_SEC;
 
-        if (tempoMaximo > 0 &&
-            tempoDecorrido >= tempoMaximo) {
+        if (tempoMaximo > 0 && tempoDecorrido >= tempoMaximo) {
             break;
         }
 
         visitado[atual] = 1;
 
-        resultado->caminho[
-            resultado->tamanhoCaminho++
-        ] = atual;
+        resultado->caminho[resultado->tamanhoCaminho++] = atual;
 
         resultado->verticesVisitados++;
 
@@ -70,8 +61,7 @@ ResultadoGuloso *executarGuloso(
             break;
         }
 
-        const Aresta *aresta =
-            grafo->vertices[atual].primeiraAresta;
+        const Aresta *aresta = grafo->vertices[atual].primeiraAresta;
 
         const Aresta *melhorAresta = NULL;
 
@@ -93,8 +83,7 @@ ResultadoGuloso *executarGuloso(
         if (melhorAresta == NULL)
             break;
 
-        if (custoAtual >
-            INT64_MAX - melhorAresta->peso) {
+        if (custoAtual > INT64_MAX - melhorAresta->peso) {
             break;
         }
 
@@ -104,17 +93,15 @@ ResultadoGuloso *executarGuloso(
 
     resultado->custo = custoAtual;
 
-    resultado->tempoExecucao =
-        (double)(clock() - inicio) / CLOCKS_PER_SEC;
+    resultado->tempoExecucao = (double)(clock() - inicio) / CLOCKS_PER_SEC;
 
     free(visitado);
 
     return resultado;
 }
 
-void imprimirResultadoGuloso(
-    const ResultadoGuloso *resultado
-) {
+//função para imprimir o resultado do algoritmo guloso
+void imprimirResultadoGuloso(const ResultadoGuloso *resultado) {
     if (resultado == NULL)
         return;
 
@@ -145,9 +132,7 @@ void imprimirResultadoGuloso(
         resultado->tempoExecucao);
 }
 
-void destruirResultadoGuloso(
-    ResultadoGuloso *resultado
-) {
+void destruirResultadoGuloso(ResultadoGuloso *resultado) {
     if (resultado == NULL)
         return;
 

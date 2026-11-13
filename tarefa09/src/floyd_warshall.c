@@ -7,7 +7,7 @@
 
 #include "floyd_warshall.h"
 
-// Aloca uma matriz de distancias
+//Aloca uma matriz de distancias
 static int64_t **criarMatrizDistancias(int n) {
     int64_t **matriz = calloc(n + 1, sizeof(int64_t *));
 
@@ -29,7 +29,7 @@ static int64_t **criarMatrizDistancias(int n) {
     return matriz;
 }
 
-// Aloca a matriz utilizada na reconstrucao
+//Aloca a matriz utilizada na reconstrucao
 static int **criarMatrizProximo(int n) {
     int **matriz = calloc(n + 1, sizeof(int *));
 
@@ -51,7 +51,7 @@ static int **criarMatrizProximo(int n) {
     return matriz;
 }
 
-// Libera a memoria alocada para o resultado
+//Libera a memoria alocada para o resultado
 void destruirResultadoFloyd(ResultadoFloydWarshall *resultado) {
     if (resultado == NULL)
         return;
@@ -75,14 +75,14 @@ void destruirResultadoFloyd(ResultadoFloydWarshall *resultado) {
     free(resultado);
 }
 
-// Executa Floyd-Warshall
+//Executa Floyd-Warshall
 ResultadoFloydWarshall *floydWarshall(const Grafo *grafo) {
     if (grafo == NULL || grafo->numVertices <= 0)
         return NULL;
 
     int n = grafo->numVertices;
 
-    // Aloca a estrutura de resultados
+    //Aloca a estrutura de resultados
     ResultadoFloydWarshall *resultado =
         calloc(1, sizeof(ResultadoFloydWarshall));
 

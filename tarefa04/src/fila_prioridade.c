@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "fila_prioridade.h"
 
+//Funções auxiliares para manipulação do heap
 static void trocarElementos(FilaPrioridade *fila, int i, int j) {
     ElementoHeap temp = fila->elementos[i];
 
@@ -13,12 +14,12 @@ static void trocarElementos(FilaPrioridade *fila, int i, int j) {
     fila->posicao[fila->elementos[j].vertice] = j;
 }
 
+//Função auxiliar para subir um elemento na heap
 static void subirHeap(FilaPrioridade *fila, int i) {
     while (i > 0) {
         int pai = (i - 1) / 2;
 
-        if (fila->elementos[pai].prioridade <=
-            fila->elementos[i].prioridade) {
+        if (fila->elementos[pai].prioridade <= fila->elementos[i].prioridade) {// Se o pai tem prioridade menor ou igual, a heap está correta
             break;
         }
 
@@ -27,21 +28,18 @@ static void subirHeap(FilaPrioridade *fila, int i) {
     }
 }
 
-static void descerHeap(FilaPrioridade *fila, int i) {
+static void descerHeap(FilaPrioridade *fila, int i) {//Função auxiliar para descer um elemento na heap
     while (1) {
         int menor = i;
         int esquerdo = 2 * i + 1;
         int direito = 2 * i + 2;
 
-        if (esquerdo < fila->tamanho &&
-            fila->elementos[esquerdo].prioridade <
-            fila->elementos[menor].prioridade) {
+        // Se o filho esquerdo existe e tem prioridade menor que o elemento atual, atualizamos o menor
+        if (esquerdo < fila->tamanho && fila->elementos[esquerdo].prioridade < fila->elementos[menor].prioridade) {
             menor = esquerdo;
         }
-
-        if (direito < fila->tamanho &&
-            fila->elementos[direito].prioridade <
-            fila->elementos[menor].prioridade) {
+        // Se o filho direito existe e tem prioridade menor que o menor atual, atualizamos o menor
+        if (direito < fila->tamanho && fila->elementos[direito].prioridade < fila->elementos[menor].prioridade) {
             menor = direito;
         }
 
@@ -54,6 +52,7 @@ static void descerHeap(FilaPrioridade *fila, int i) {
     }
 }
 
+//funções da fila de prioridade
 FilaPrioridade *criarFilaPrioridade(int capacidade) {
     if (capacidade <= 0) {
         return NULL;
@@ -67,7 +66,7 @@ FilaPrioridade *criarFilaPrioridade(int capacidade) {
 
     fila->elementos = malloc(capacidade * sizeof(ElementoHeap));
     fila->posicao = malloc((capacidade + 1) * sizeof(int));
-
+    //+1 para lidar com o caso em que o vértice é 1, já que os vértices começam em 1 e não em 0
     if (fila->elementos == NULL || fila->posicao == NULL) {
         free(fila->elementos);
         free(fila->posicao);
@@ -85,6 +84,7 @@ FilaPrioridade *criarFilaPrioridade(int capacidade) {
     return fila;
 }
 
+//função para inserir um elemento na fila de prioridade
 int inserir(FilaPrioridade *fila, int vertice, int64_t prioridade) {
     if (fila == NULL ||
         vertice < 1 ||
@@ -106,6 +106,7 @@ int inserir(FilaPrioridade *fila, int vertice, int64_t prioridade) {
     return 1;
 }
 
+//função para extrair o elemento com a menor prioridade da fila de prioridade
 int extrairMinimo(FilaPrioridade *fila) {
     if (fila == NULL || fila->tamanho == 0) {
         return -1;
@@ -127,8 +128,8 @@ int extrairMinimo(FilaPrioridade *fila) {
     return minimo;
 }
 
-int diminuirPrioridade(FilaPrioridade *fila, int vertice,
-                       int64_t novaPrioridade) {
+//função para diminuir a prioridade de um elemento na fila de prioridade
+int diminuirPrioridade(FilaPrioridade *fila, int vertice, int64_t novaPrioridade) {
     if (fila == NULL ||
         vertice < 1 ||
         vertice > fila->capacidade) {
@@ -149,10 +150,12 @@ int diminuirPrioridade(FilaPrioridade *fila, int vertice,
     return 1;
 }
 
+//função para verificar se a fila de prioridade está vazia
 int filaVazia(const FilaPrioridade *fila) {
     return fila == NULL || fila->tamanho == 0;
 }
 
+//função para destruir a fila de prioridade e liberar a memória alocada
 void destruirFilaPrioridade(FilaPrioridade *fila) {
     if (fila == NULL) {
         return;

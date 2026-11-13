@@ -5,12 +5,14 @@
 #include <time.h>
 #include "busca_completa.h"
 
+//estrutura para controlar o tempo de execução da busca completa
 typedef struct {
     clock_t inicio;
     double tempoMaximo;
     int interrompida;
 } ControleBusca;
 
+//função auxiliar para verificar se o tempo máximo de execução foi atingido
 static int tempoEsgotado(ControleBusca *controle) {
     if (controle->interrompida)
         return 1;
@@ -29,6 +31,7 @@ static int tempoEsgotado(ControleBusca *controle) {
     return 0;
 }
 
+//função recursiva para explorar todos os caminhos possíveis entre a origem e o destino
 static void explorarCaminhos(
     const Grafo *grafo,
     int atual,
@@ -49,6 +52,7 @@ static void explorarCaminhos(
     caminhoAtual[tamanhoCaminho] = atual;
     tamanhoCaminho++;
 
+    //se o vértice atual é o destino, atualizamos o melhor caminho encontrado
     if (atual == destino) {
         resultado->numCaminhosExplorados++;
 
@@ -62,7 +66,7 @@ static void explorarCaminhos(
                 resultado->melhorCaminho[i] = caminhoAtual[i];
             }
         }
-    } else {
+    } else {//se o vértice atual não é o destino, exploramos os vizinhos
         const Aresta *aresta =
             grafo->vertices[atual].primeiraAresta;
 
@@ -97,23 +101,15 @@ static void explorarCaminhos(
     visitado[atual] = 0;
 }
 
-ResultadoBuscaCompleta *buscaCompleta(
-    const Grafo *grafo,
-    int origem,
-    int destino,
-    double tempoMaximo
-) {
-    if (grafo == NULL ||
-        origem < 1 || origem > grafo->numVertices ||
-        destino < 1 || destino > grafo->numVertices ||
-        tempoMaximo < 0) {
+//função principal para realizar a busca completa entre a origem e o destino
+ResultadoBuscaCompleta *buscaCompleta( const Grafo *grafo, int origem, int destino, double tempoMaximo) {
+    if (grafo == NULL || origem < 1 || origem > grafo->numVertices || destino < 1 || destino > grafo->numVertices || tempoMaximo < 0) {
         return NULL;
     }
 
     int n = grafo->numVertices;
 
-    ResultadoBuscaCompleta *resultado =
-        calloc(1, sizeof(ResultadoBuscaCompleta));
+    ResultadoBuscaCompleta *resultado = calloc(1, sizeof(ResultadoBuscaCompleta));
 
     if (resultado == NULL)
         return NULL;
@@ -123,15 +119,13 @@ ResultadoBuscaCompleta *buscaCompleta(
     resultado->numVertices = n;
     resultado->melhorCusto = INT64_MAX;
 
-    resultado->melhorCaminho =
-        malloc((n + 1) * sizeof(int));
+    resultado->melhorCaminho = malloc((n + 1) * sizeof(int));
 
     int *visitado = calloc(n + 1, sizeof(int));
     int *caminhoAtual = malloc((n + 1) * sizeof(int));
 
-    if (resultado->melhorCaminho == NULL ||
-        visitado == NULL ||
-        caminhoAtual == NULL) {
+    //verifica se a alocação de memória foi bem-sucedida
+    if (resultado->melhorCaminho == NULL || visitado == NULL || caminhoAtual == NULL) {
 
         free(visitado);
         free(caminhoAtual);
@@ -139,12 +133,14 @@ ResultadoBuscaCompleta *buscaCompleta(
         return NULL;
     }
 
+    //inicializa o controle de tempo da busca completa
     ControleBusca controle = {
         .inicio = clock(),
         .tempoMaximo = tempoMaximo,
         .interrompida = 0
     };
 
+    //inicia a exploração dos caminhos a partir do vértice de origem
     explorarCaminhos(
         grafo,
         origem,
@@ -165,9 +161,7 @@ ResultadoBuscaCompleta *buscaCompleta(
     return resultado;
 }
 
-void imprimirResultadoBuscaCompleta(
-    const ResultadoBuscaCompleta *resultado
-) {
+void imprimirResultadoBuscaCompleta(const ResultadoBuscaCompleta *resultado) {
     if (resultado == NULL)
         return;
 
@@ -210,9 +204,7 @@ void imprimirResultadoBuscaCompleta(
     );
 }
 
-void destruirResultadoBuscaCompleta(
-    ResultadoBuscaCompleta *resultado
-) {
+void destruirResultadoBuscaCompleta(ResultadoBuscaCompleta *resultado) {
     if (resultado == NULL)
         return;
 
