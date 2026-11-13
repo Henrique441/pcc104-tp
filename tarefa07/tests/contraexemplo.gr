@@ -1,0 +1,6 @@
+c Contraexemplo para estrategia gulosa
+p sp 4 4
+a 1 2 1
+a 1 3 4
+a 2 4 100
+a 3 4 4

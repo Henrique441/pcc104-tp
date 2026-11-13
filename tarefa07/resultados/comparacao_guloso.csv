@@ -1,0 +1,16 @@
+instancia,vertices,densidade,custo_guloso,custo_otimo,erro_relativo,erro_percentual,classificacao,vertices_visitados,tempo_guloso,tempo_dijkstra
+tests/instancias_sinteticas/densidade_20/grafo_10.gr,10,densidade_20,21,21,0.0,0.0,Otima,3,1e-06,2e-06
+tests/instancias_sinteticas/densidade_20/grafo_15.gr,15,densidade_20,,30,,,Nao encontrou,6,2e-06,2e-06
+tests/instancias_sinteticas/densidade_20/grafo_20.gr,20,densidade_20,32,6,4.333333333333333,433.3333333333333,Subotima,6,2e-06,4e-06
+tests/instancias_sinteticas/densidade_20/grafo_25.gr,25,densidade_20,,23,,,Nao encontrou,18,5e-06,4e-06
+tests/instancias_sinteticas/densidade_20/grafo_5.gr,5,densidade_20,36,36,0.0,0.0,Otima,5,2e-06,1e-06
+tests/instancias_sinteticas/densidade_50/grafo_10.gr,10,densidade_50,11,11,0.0,0.0,Otima,4,2e-06,3e-06
+tests/instancias_sinteticas/densidade_50/grafo_15.gr,15,densidade_50,32,13,1.4615384615384615,146.15384615384613,Subotima,8,3e-06,5e-06
+tests/instancias_sinteticas/densidade_50/grafo_20.gr,20,densidade_50,51,9,4.666666666666667,466.6666666666667,Subotima,16,7e-06,4e-06
+tests/instancias_sinteticas/densidade_50/grafo_25.gr,25,densidade_50,37,6,5.166666666666667,516.6666666666667,Subotima,18,6e-06,5e-06
+tests/instancias_sinteticas/densidade_50/grafo_5.gr,5,densidade_50,35,10,2.5,250.0,Subotima,5,2e-06,1e-06
+tests/instancias_sinteticas/densidade_80/grafo_10.gr,10,densidade_80,36,9,3.0,300.0,Subotima,10,4e-06,2e-06
+tests/instancias_sinteticas/densidade_80/grafo_15.gr,15,densidade_80,28,10,1.8,180.0,Subotima,10,4e-06,3e-06
+tests/instancias_sinteticas/densidade_80/grafo_20.gr,20,densidade_80,5,4,0.25,25.0,Subotima,5,3e-06,5e-06
+tests/instancias_sinteticas/densidade_80/grafo_25.gr,25,densidade_80,19,11,0.7272727272727273,72.72727272727273,Subotima,8,3e-06,8e-06
+tests/instancias_sinteticas/densidade_80/grafo_5.gr,5,densidade_80,6,6,0.0,0.0,Otima,3,1e-06,1e-06
