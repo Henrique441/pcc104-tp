@@ -6,5 +6,8 @@ tarefa03/resultado_roma.txt
 tarefa04/resultado_roma.txt
 tarefa04/resultado3_ny.txt
 tarefa04/resultado4_ny.txt
+tarefa04/resultado03_ny.txt
+tarefa04/resultado04_ny.txt
+tarefa04/resultado*.txt
 *.exe
 *.o
