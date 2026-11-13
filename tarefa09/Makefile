@@ -3,7 +3,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Wpedantic -std=c11 -O2 -Iinclude
 
-TARGET = tarefa09.exe
+TARGET = tarefa09
 
 SRC = src/main.c \
       src/grafo.c \

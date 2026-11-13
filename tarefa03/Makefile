@@ -2,7 +2,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -O2 -Iinclude
 
-TARGET = tarefa03.exe
+TARGET = tarefa03
 
 SRC = src/main.c src/grafo.c src/dijkstra.c
 

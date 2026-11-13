@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Wpedantic -std=c11 -Iinclude
 
-TARGET = tarefa01.exe
+TARGET = tarefa01
 
 SRC = src/main.c src/matriz.c
 

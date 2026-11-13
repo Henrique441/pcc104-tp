@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -std=c11 -O2 -Iinclude
 
 SRC = src/main.c src/grafo.c src/dijkstra.c
 OBJ = $(SRC:.c=.o)
-TARGET = tarefa02.exe
+TARGET = tarefa02
 
 all: $(TARGET)
 
